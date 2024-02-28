@@ -7,12 +7,25 @@ public class Calculator {
         char operator;
 
         System.out.print("Enter the first number: ");
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Error: Invalid input. Please enter a valid number.");
+            scanner.next(); // Clear the invalid input
+        }
         num1 = scanner.nextDouble();
 
         System.out.print("Enter an operator (+, -, *, /): ");
-        operator = scanner.next().charAt(0);
+        String inputOperator = scanner.next();
+        while (inputOperator.length() != 1 || "+-*/".indexOf(inputOperator.charAt(0)) == -1) {
+            System.out.println("Error: Invalid input. Please enter a valid operator (+, -, *, /).");
+            inputOperator = scanner.next();
+        }
+        operator = inputOperator.charAt(0);
 
         System.out.print("Enter the second number: ");
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Error: Invalid input. Please enter a valid number.");
+            scanner.next(); // Clear the invalid input
+        }
         num2 = scanner.nextDouble();
 
         switch (operator) {
